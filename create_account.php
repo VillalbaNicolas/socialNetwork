@@ -20,7 +20,7 @@ if (isset($_POST['createaccount'])) {
 
                         if (!DB::query('SELECT email FROM users WHERE email=:email', array(':email' => $email))) {
 
-                            DB::query('INSERT INTO users VALUES (\'\', :username, :pass, :email, \'\')', array(':username' => $username, ':pass' => password_hash($password, PASSWORD_BCRYPT), ':email' => $email));
+                            DB::query('INSERT INTO users VALUES (\'\', :username, :pass, :email, \'0\', \'\' )', array(':username' => $username, ':pass' => password_hash($password, PASSWORD_BCRYPT), ':email' => $email));
                             echo "Success!!";
                         } else {
                             echo 'email in use!!';
